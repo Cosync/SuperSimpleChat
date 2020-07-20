@@ -22,6 +22,7 @@
 		567BFDB124C634F30038CD27 /* ChatEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567BFDB024C634F30038CD27 /* ChatEntry.swift */; };
 		567BFDB324C6369B0038CD27 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567BFDB224C6369B0038CD27 /* LoginView.swift */; };
 		567BFDB524C636A60038CD27 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567BFDB424C636A60038CD27 /* ChatView.swift */; };
+		567BFDB724C645A70038CD27 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 567BFDB624C645A60038CD27 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		567BFDB024C634F30038CD27 /* ChatEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatEntry.swift; sourceTree = "<group>"; };
 		567BFDB224C6369B0038CD27 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		567BFDB424C636A60038CD27 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		567BFDB624C645A60038CD27 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		B96381D6F8A0ED6A41E1B9C1 /* Pods-SuperSimpleChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperSimpleChat.release.xcconfig"; path = "Target Support Files/Pods-SuperSimpleChat/Pods-SuperSimpleChat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,6 +89,7 @@
 		567BFD9124C621AA0038CD27 /* SuperSimpleChat */ = {
 			isa = PBXGroup;
 			children = (
+				567BFDB624C645A60038CD27 /* README.md */,
 				567BFD9224C621AA0038CD27 /* AppDelegate.swift */,
 				567BFD9424C621AA0038CD27 /* SceneDelegate.swift */,
 				567BFD9624C621AA0038CD27 /* ContentView.swift */,
@@ -185,6 +188,7 @@
 			files = (
 				567BFD9F24C621AC0038CD27 /* LaunchScreen.storyboard in Resources */,
 				567BFD9C24C621AC0038CD27 /* Preview Assets.xcassets in Resources */,
+				567BFDB724C645A70038CD27 /* README.md in Resources */,
 				567BFD9924C621AC0038CD27 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
