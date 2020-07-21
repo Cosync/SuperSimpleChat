@@ -90,12 +90,12 @@
 			isa = PBXGroup;
 			children = (
 				567BFDB624C645A60038CD27 /* README.md */,
+				567BFDA624C634810038CD27 /* Constants.swift */,
 				567BFD9224C621AA0038CD27 /* AppDelegate.swift */,
 				567BFD9424C621AA0038CD27 /* SceneDelegate.swift */,
 				567BFD9624C621AA0038CD27 /* ContentView.swift */,
 				567BFDB224C6369B0038CD27 /* LoginView.swift */,
 				567BFDB424C636A60038CD27 /* ChatView.swift */,
-				567BFDA624C634810038CD27 /* Constants.swift */,
 				567BFDA824C634970038CD27 /* RealmManager.swift */,
 				567BFDAA24C634B30038CD27 /* Models.swift */,
 				567BFDAC24C634C40038CD27 /* AppState.swift */,
