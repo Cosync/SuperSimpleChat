@@ -61,7 +61,7 @@ struct LoginTab: View {
                             NSLog("Login success")
                             self.userDataState.setup()
                             self.chatEntryState.setup()
-                            self.appState.target = .home
+                            self.appState.target = .chat
                         }
                     }
                 )
@@ -84,6 +84,8 @@ struct SignupTab: View {
     @State private var password = ""
     @State private var name = ""
     @EnvironmentObject var appState: AppState
+    @EnvironmentObject var userDataState: UserDataState
+    @EnvironmentObject var chatEntryState: ChatEntryState
     var body: some View {
         VStack(spacing: 20) {
             
@@ -116,7 +118,9 @@ struct SignupTab: View {
                 RealmManager.shared.signup(self.email, password: self.password, name: self.name, onCompletion: { (error) in
                         DispatchQueue.main.async {
                             NSLog("Login success")
-                            self.appState.target = .home
+                            self.userDataState.setup()
+                            self.chatEntryState.setup()
+                            self.appState.target = .chat
                         }
                     }
                 )

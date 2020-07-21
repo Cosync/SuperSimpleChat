@@ -28,7 +28,7 @@ import Foundation
 // View table used for routing. Updated when a new view is added
 enum TargetUI: Int {
     case login
-    case home
+    case chat
 }
 
 // Alert message container
