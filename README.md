@@ -46,6 +46,7 @@ XCode Project
 * Open generated workspace file
 * Set the Realm id in Models.swift
 * Copy the Realm id from the top left button in the Realm panel in the web UI
+* Edit the REALM_APP_ID in the Constants.swift function with the copied Realm Id
 
 Run the app
 
