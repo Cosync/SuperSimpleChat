@@ -6,6 +6,6 @@ target 'SuperSimpleChat' do
   use_frameworks!
 
   # Pods for SuperSimpleChat
-  pod 'RealmSwift', '=10.0.0-beta.5'
+  pod 'RealmSwift', '=10.0.0-rc.1' 
 
 end

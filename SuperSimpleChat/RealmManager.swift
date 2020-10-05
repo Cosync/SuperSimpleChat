@@ -43,8 +43,7 @@ class RealmManager {
     
     func login(_ email: String, password: String, onCompletion completion: @escaping (Error?) -> Void) {
 
-        
-        app.login(credentials: Credentials(email: email, password: password)) { (user, error) in
+        app.login(credentials: Credentials.emailPassword(email: email, password: password)) { (user, error) in
             
             guard error == nil else {
                 NSLog("Login failed: \(error!.localizedDescription)")
@@ -63,7 +62,7 @@ class RealmManager {
     
     func logout(onCompletion completion: @escaping (Error?) -> Void) {
         
-        if let user = app.currentUser() {
+        if let user = app.currentUser {
             user.logOut(completion: { (error) in
                 completion(error)
             })
@@ -72,7 +71,7 @@ class RealmManager {
     
     func signup(_ email: String, password: String, name: String, onCompletion completion: @escaping (Error?) -> Void) {
         
-        app.emailPasswordAuth().registerUser(email: email, password: password, completion:
+        app.emailPasswordAuth.registerUser(email: email, password: password, completion:
             {(error) in
             // Completion handlers are not necessarily called on the UI thread.
             // This call to DispatchQueue.main.sync ensures that any changes to the UI,
@@ -89,7 +88,7 @@ class RealmManager {
                 
                 self.login(email, password: password, onCompletion: { [weak self](err) in
                                         
-                    if  let uid = self?.app.currentUser()?.id {
+                    if  let uid = self?.app.currentUser?.id {
                         
                         let userPublic = UserData(uid: uid, partition: uid, name: name)
                         try! self?.userRealm.write {
@@ -110,8 +109,8 @@ class RealmManager {
     }
 
     func initRealms(onCompletion completion: @escaping (Error?) -> Void) {
-        if  let user = self.app.currentUser(),
-            let uid = user.id {
+        if  let user = self.app.currentUser {
+            let uid = user.id
             
             // open user realm
             Realm.asyncOpen(configuration: user.configuration(partitionValue: uid),
