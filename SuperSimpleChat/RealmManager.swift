@@ -43,19 +43,21 @@ class RealmManager {
     
     func login(_ email: String, password: String, onCompletion completion: @escaping (Error?) -> Void) {
 
-        app.login(credentials: Credentials.emailPassword(email: email, password: password)) { (user, error) in
+        app.login(credentials: Credentials.emailPassword(email: email, password: password)) { result in
             
-            guard error == nil else {
-                NSLog("Login failed: \(error!.localizedDescription)")
+            switch result {
+            case .success( _):
+                DispatchQueue.main.async {
+                    self.initRealms(onCompletion: { (err) in
+                        completion(err)
+                    })
+                    
+                    
+                }
+            case .failure(let error):
                 completion(error)
-                return
             }
-            DispatchQueue.main.async {
-                self.initRealms(onCompletion: { (err) in
-                    completion(err)
-                })
-                
-            }
+            
         }
         
     }
@@ -114,32 +116,31 @@ class RealmManager {
             
             // open user realm
             Realm.asyncOpen(configuration: user.configuration(partitionValue: uid),
-            callback: { (maybeRealm, error) in
-                guard error == nil else {
-                    fatalError("Failed to open realm: \(error!)")
-                }
-                guard let realm = maybeRealm else {
-                    fatalError("realm is nil!")
-                }
-                // realm opened
-                self.userRealm = realm
+            callback: { result in
                 
-                // open chat realm
-                Realm.asyncOpen(configuration: user.configuration(partitionValue: "chat"),
-                callback: { (maybeRealm, error) in
-                    guard error == nil else {
-                        fatalError("Failed to open realm: \(error!)")
-                    }
-                    guard let realm = maybeRealm else {
-                        fatalError("realm is nil!")
-                    }
-                    // realm opened
-                    self.chatRealm = realm
+                switch result {
+                case .success(let realm):
+                    self.userRealm = realm
                     
-                    completion(nil)
-                })
+                    // open chat realm
+                    Realm.asyncOpen(configuration: user.configuration(partitionValue: "chat"),
+                    callback: { result in
+                        
+                        switch result {
+                        case .success(let realm):
+                            self.chatRealm = realm
+                            completion(nil)
+                        case .failure(let error):
+                            fatalError("Failed to open realm: \(error)")
+                        }
+
+                    })
+                case .failure(let error):
+                    fatalError("Failed to open realm: \(error)")
+                }
                 
             })
+            
         }
     }
 }
