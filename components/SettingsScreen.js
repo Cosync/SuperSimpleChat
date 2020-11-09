@@ -13,7 +13,7 @@ const SettingsScreen = () => {
       <Text style={{ fontSize: 18, marginTop: 10 }}>
         Simple Login Registraction Example
       </Text>
-      <Text style={{ fontSize: 18, marginTop: 10 }}>https://aboutreact</Text>
+       
     </View>
   );
 };

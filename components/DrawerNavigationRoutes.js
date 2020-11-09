@@ -72,12 +72,12 @@ const DrawerNavigatorRoutes = createDrawerNavigator(
         drawerLabel: 'Chat Screen',
       },
     },
-    SettingsScreen: {
-      screen: ThirdActivity_StackNavigator,
-      navigationOptions: {
-        drawerLabel: 'Setting Screen',
-      },
-    },
+    // SettingsScreen: {
+    //   screen: ThirdActivity_StackNavigator,
+    //   navigationOptions: {
+    //     drawerLabel: 'Setting Screen',
+    //   },
+    // },
   },
   {
     contentComponent: CustomSidebarMenu,

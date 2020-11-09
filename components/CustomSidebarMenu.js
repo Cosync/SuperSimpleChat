@@ -17,10 +17,10 @@ const CustomSidebarMenu = props => {
       navOptionName: 'Chat Screen',
       screenToNavigate: 'ChatScreen',
     },
-    {
-      navOptionName: 'Setting Screen',
-      screenToNavigate: 'SettingsScreen',
-    },
+    // {
+    //   navOptionName: 'Setting Screen',
+    //   screenToNavigate: 'SettingsScreen',
+    // },
     {
       navOptionName: 'Logout',
       screenToNavigate: 'logout',
