@@ -1,6 +1,6 @@
  
 import Realm from "realm";
-import React, { useState } from 'react'; 
+import React, { useState, useRef } from 'react'; 
 import {
   StyleSheet,
   TextInput,
@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import Loader from './Loader'; 
+import Configure from '../config/Config'; 
 
 const LoginScreen = props => {
   
@@ -21,13 +22,32 @@ const LoginScreen = props => {
   let [userPassword, setUserPassword] = useState('');
   let [loading, setLoading] = useState(false);
   let [errortext, setErrortext] = useState('');
+  const ref_input_pwd = useRef();
+  
 
+  global.appId = Configure.Realm.appId; 
+  AsyncStorage.setItem('appId', global.appId);  
+
+
+  const validateEmail = (text) => {
+   
+    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (reg.test(text) === false) return false;
+    else return true;
+  }
+
+  
   const handleSubmitPress = () => {
     setErrortext('');
     if (!userEmail) {
       alert('Please fill Email');
       return;
     }
+    if (!validateEmail(userEmail)) {
+      alert('Please fill a valid email');
+      return;
+    }
+
     if (!userPassword) {
       alert('Please fill Password');
       return;
@@ -36,9 +56,7 @@ const LoginScreen = props => {
     AsyncStorage.setItem('user_email', userEmail);  
     AsyncStorage.setItem('user_password', userPassword); 
 
-    setLoading(true); 
-    global.appId = 'application-0-kjmaz'; 
-    AsyncStorage.setItem('appId', global.appId );  
+    setLoading(true);  
 
     const appConfig = {
       id:  global.appId,
@@ -88,15 +106,13 @@ const LoginScreen = props => {
                 style={styles.inputStyle}
                 onChangeText={UserEmail => setUserEmail(UserEmail)}
                 underlineColorAndroid="#4638ab"
-                placeholder="Enter Email" //dummy@abc.com
-                //placeholderTextColor="#4638ab"
+                placeholder="Enter Email" 
                 autoCapitalize="none"
                 keyboardType="email-address" 
-                returnKeyType="next"
-                onSubmitEditing={() =>
-                  this._passwordinput && this._passwordinput.focus()
-                }
+                returnKeyType="next" 
+                onSubmitEditing={() => ref_input_pwd.current.focus()}
                 blurOnSubmit={false}
+                
               />
             </View>
             <View style={styles.SectionStyle}>
@@ -104,13 +120,13 @@ const LoginScreen = props => {
                 style={styles.inputStyle}
                 onChangeText={UserPassword => setUserPassword(UserPassword)}
                 underlineColorAndroid="#4638ab"
-                placeholder="Enter Password" //12345
-                //placeholderTextColor="#4638ab"
-                keyboardType="default"
-                 
-                onSubmitEditing={Keyboard.dismiss}
+                placeholder="Enter Password" 
+                keyboardType="default" 
+                returnKeyType="go"
+                onSubmitEditing={() => Keyboard.dismiss, handleSubmitPress}
                 blurOnSubmit={false}
                 secureTextEntry={true}
+                ref={ref_input_pwd}
               />
             </View>
             {errortext != '' ? (
@@ -122,11 +138,13 @@ const LoginScreen = props => {
               onPress={handleSubmitPress}>
               <Text style={styles.buttonTextStyle}>LOGIN</Text>
             </TouchableOpacity>
+
             { <Text
               style={styles.registerTextStyle}
               onPress={() => props.navigation.navigate('RegisterScreen')}>
-              New Here ? Register
+              Create New Account
             </Text>}
+
           </KeyboardAvoidingView>
         </View>
       </ScrollView>

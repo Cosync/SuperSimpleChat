@@ -5,14 +5,9 @@
  * @format
  * @flow strict-local
  */
-
-import React from 'react'; 
-import { ActivityIndicator, View, StyleSheet, Image } from 'react-native'; 
-import { createAppContainer, createSwitchNavigator } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-
-
  
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack'; 
 import SplashScreen from './components/SplashScreen';
 import LoginScreen from './components/LoginScreen';
 import RegisterScreen from './components/Register';

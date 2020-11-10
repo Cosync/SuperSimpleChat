@@ -5,6 +5,7 @@ import { GiftedChat } from 'react-native-gifted-chat'
 import { ActivityIndicator, StyleSheet } from 'react-native';
 import { ObjectId } from 'bson';
 import AsyncStorage from '@react-native-community/async-storage';
+import Configure from '../config/Config'; 
 
 const ChatScreen = () => { 
 
@@ -22,7 +23,7 @@ const ChatScreen = () => {
       let user_id_val = await AsyncStorage.getItem('user_id');
       if(!user_id_val) props.navigation.navigate('Auth'); 
 
-      global.appId = await AsyncStorage.getItem('appId');
+      global.appId = Configure.Realm.appId;
 
       let userEmail = await AsyncStorage.getItem('user_email');
       let userPassword = await AsyncStorage.getItem('user_password'); 
