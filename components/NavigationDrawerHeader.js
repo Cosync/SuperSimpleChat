@@ -17,7 +17,7 @@ const NavigationDrawerHeader = props => {
         <Image
           source={{
             uri:
-              'https://raw.githubusercontent.com/AboutReact/sampleresource/master/drawerWhite.png',
+              'https://cosync-assets.s3-us-west-1.amazonaws.com/drawerWhite.png',
           }}
           style={{ width: 25, height: 25, marginLeft: 5 }}
         />

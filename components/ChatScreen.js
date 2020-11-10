@@ -2,7 +2,7 @@ import Schema from '../config/Schema';
 import Realm from "realm"; 
 import React, { useState, useCallback, useEffect } from 'react'
 import { GiftedChat } from 'react-native-gifted-chat' 
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, StyleSheet } from 'react-native';
 import { ObjectId } from 'bson';
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -119,7 +119,7 @@ const ChatScreen = () => {
       user: {
         _id: message.uid,
         name: 'React Native',
-        avatar: 'https://cosync-storage.s3.amazonaws.com/public/5f9b857bf0b1f4f4c94894b5/logo.png',
+        avatar: 'https://cosync-assets.s3-us-west-1.amazonaws.com/logo.png',
       }
     };
 
@@ -132,7 +132,7 @@ const ChatScreen = () => {
   return (
     
     <GiftedChat
-      renderLoading={() =>  <ActivityIndicator size="large" color="#0000ff" />}
+      renderLoading={() =>  <ActivityIndicator size="large" color="#0000ff"  animating={true} style={styles.activityIndicator}/>}
       messages={messages}
       onSend={messages => onSend(messages)}
       user={{ _id: global.user.id}}/>
@@ -140,3 +140,13 @@ const ChatScreen = () => {
 }
 
 export default ChatScreen;
+
+
+
+const styles = StyleSheet.create({
+   
+  activityIndicator: {
+    alignItems: 'center',
+    height: 80,
+  },
+});
