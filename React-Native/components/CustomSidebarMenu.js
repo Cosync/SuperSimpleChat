@@ -1,7 +1,7 @@
  
 
 //Import React
-import React from 'react';
+import React, { useState } from 'react';
 
 //Import all required component
 import { View, StyleSheet, Text, Alert } from 'react-native';
@@ -27,7 +27,10 @@ const CustomSidebarMenu = props => {
     },
   ];
 
+  const [userName, setUserName] = useState('Cosync Chat');
+
   const handleClick = (index, screenToNavigate) => {
+
     if (screenToNavigate == 'logout') {
       props.navigation.toggleDrawer();
       Alert.alert(
@@ -55,17 +58,22 @@ const CustomSidebarMenu = props => {
       props.navigation.toggleDrawer();
       global.currentScreenIndex = screenToNavigate;
       props.navigation.navigate(screenToNavigate);
+      
     }
+
+    if(global.userData) setUserName(global.userData.name);
+     
   };
+
   return (
     <View style={stylesSidebar.sideMenuContainer}>
       <View style={stylesSidebar.profileHeader}>
         <View style={stylesSidebar.profileHeaderPicCircle}>
           <Text style={{ fontSize: 25, color: '#307ecc' }}>
-            {'Cosync Chat'.charAt(0)}
+            {userName.charAt(0)}
           </Text>
         </View>
-        <Text style={stylesSidebar.profileHeaderText}>CosyncChat</Text>
+        <Text style={stylesSidebar.profileHeaderText}>{userName}</Text>
       </View>
       <View style={stylesSidebar.profileHeaderLine} />
       <View style={{ width: '100%', flex: 1 }}>
