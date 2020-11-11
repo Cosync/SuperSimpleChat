@@ -11,8 +11,10 @@ import {  StyleSheet,
   Keyboard,
   TouchableOpacity,
   KeyboardAvoidingView, } from 'react-native';
-import { set } from 'react-native-reanimated';
+import * as RealmLib from '../libs/RealmLib'; 
 import Loader from './Loader'; 
+import { ObjectId } from 'bson';
+import Configure from '../config/Config'; 
 
 const Register = props => {
   
@@ -20,100 +22,118 @@ const Register = props => {
   let [infotext, setInfotext] = useState('');
   let [userDisplayName, setUserDisplayName] = useState('');
   let [userEmail, setUserEmail] = useState('');
-  let [userPassword, setUserPassword] = useState('');
-  let [userConfPassword, setUserConfPassword] = useState('');
+  let [userPassword, setUserPassword] = useState(''); 
   let [loading, setLoading] = useState(false); 
   const ref_input_email = useRef();
-  const ref_input_pwd = useRef();
-  const ref_input_conf_pwd = useRef();
+  const ref_input_pwd = useRef(); 
 
-  useEffect(() => {
-    
-  }, []);
+   
 
-    const validateEmail = (text) => {
-    
-      let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-      if (reg.test(text) === false) return false;
-      else return true;
+  const validateEmail = (text) => {
+  
+    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (reg.test(text) === false) return false;
+    else return true;
+  }
+
+  const validateForm = () => {
+    if (!userDisplayName) {
+      alert('Please fill Display Name');
+      return false;
     }
 
+    if (!userEmail) {
+      alert('Please fill Email');
+      return false;
+    }
+    if (!validateEmail(userEmail)) {
+      alert('Please fill a valid email');
+      return false;
+    }
+
+    if (!userPassword) {
+      alert('Please fill Password');
+      return false;
+    }
+      
+    if (userPassword.length < 6) {
+      alert('Password and Confirmed Password must be at least 6 charactor.');
+      return false;
+    } 
+
+    return true;
+  }
+
+  
+  const handleSubmitPress = () => {
+
+    setErrortext('');
+    setInfotext('');
+
+    if(!validateForm()){
+      return;
+    }
+
+    setLoading(true);   
     
-    const handleSubmitPress = () => {
+  
+    RealmLib.signup(userEmail, userPassword).then(result => {
 
-      setErrortext('');
-      setInfotext('');
+      if(result === true){
+        setInfotext('Your account has been created. Logging in to the app now.');
 
-      if (!userDisplayName) {
-        alert('Please fill Display Name');
-        return;
+        RealmLib.login(userEmail, userPassword).then(user => {
+          AsyncStorage.setItem('user_id', user.id);  
+
+          createProfile(userDisplayName).then(res => {
+            props.navigation.navigate('DrawerNavigationRoutes'); 
+          });
+
+        }).catch(err => {
+          setLoading(false);   
+          setErrortext(`Error: ${err.message}`);
+        })
       }
-
-      if (!userEmail) {
-        alert('Please fill Email');
-        return;
-      }
-      if (!validateEmail(userEmail)) {
-        alert('Please fill a valid email');
-        return;
-      }
-
-      if (!userPassword) {
-        alert('Please fill Password');
-        return;
-      }
-      if (!userConfPassword) {
-        alert('Please fill Confirmed Password');
-        return;
-      } 
-      
-      if (userPassword != userConfPassword) {
-        alert('Password and Confirmed Password doesn\'t match.');
-        return;
-      } 
-      if (userPassword.length < 6) {
-        alert('Password and Confirmed Password must be at least 6 charactor.');
-        return;
-      } 
-
-      setLoading(true);   
-      
-      const appConfig = {
-        id:  global.appId,
-        timeout: 10000,
-      };
-
-      const app = new Realm.App(appConfig);
-      if(app.currentUser) app.currentUser.logOut();
-      
-      app.emailPasswordAuth.registerUser(userEmail, userPassword).then(result => {
-         
-        
-        setLoading(false);  
-        setInfotext('Your account has been created. Please log in to the app.');
-
-        
-        AsyncStorage.setItem('user_email', userEmail);  
-        AsyncStorage.setItem('user_password', userPassword);  
-        
-        props.navigation.navigate('DrawerNavigationRoutes'); 
-
-      }).catch(err => { 
+      else{
         setLoading(false);   
+        setErrortext(`Error: ${result.message}`);
+      }
+    }); 
+    
+  };
+
+
+  const createProfile = (name) => {
+
+    return new Promise((resolve, reject) => { 
+
+      RealmLib.openRealm().then(realm => {
+        
+
+        let userData = { 
+          _id: new ObjectId(),
+          _partition: `${global.user.id}`,
+          name: name, 
+          uid: global.user.id
+        }; 
+
+        global.privateRealm.write(() => { 
+          global.privateRealm.create(Configure.Realm.userData, userData); 
+          resolve(true)
+        })
+
+      }).catch(err => {
         setErrortext(`Error: ${err.message}`);
       })
-     
-      
-    };
-
+    })
+  }
 
 
   return (
     <View style={styles.mainBody}>  
       <Loader loading={loading} />
-      <ScrollView keyboardShouldPersistTaps="handled">
+      <ScrollView keyboardShouldPersistTaps="handled"> 
 
-    
       <KeyboardAvoidingView enabled>
 
 
@@ -166,28 +186,14 @@ const Register = props => {
                 underlineColorAndroid="#4638ab"
                 placeholder="Enter Password"
                 keyboardType="default" 
-                returnKeyType="next" 
-                blurOnSubmit={false}
-                secureTextEntry={true}
-                ref={ref_input_pwd}
-                onSubmitEditing={() => ref_input_conf_pwd.current.focus()}
-              />
-            </View>
-
-            <View style={styles.SectionStyle}>
-              <TextInput
-                style={styles.inputStyle}
-                onChangeText={value => setUserConfPassword(value)}
-                underlineColorAndroid="#4638ab"
-                placeholder="Enter Confirmed Password"
-                keyboardType="default"
                 returnKeyType="go" 
                 blurOnSubmit={false}
                 secureTextEntry={true}
-                ref={ref_input_conf_pwd}
+                ref={ref_input_pwd}
                 onSubmitEditing={() => Keyboard.dismiss, handleSubmitPress}
               />
             </View>
+ 
 
             {errortext != '' ? (
               <Text style={styles.errorTextStyle}> {errortext} </Text>

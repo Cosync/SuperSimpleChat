@@ -25,142 +25,105 @@
  * 
  * @Editor Tola VOEUNG  
  * For questions about this license, you may write to mailto:info@cosync.io
-*/
- 
-import Realm from "realm";
-import AsyncStorage from '@react-native-community/async-storage';
+*/ 
+import Realm from "realm"; 
 import Schema from '../config/Schema';
+import Configure from '../config/Config' 
 
-let allSchemas = [ 
-    Schema.ChatEntry
-];
+export const signup = (userEmail, userPassword) => {
+  return new Promise((resolve, reject) => { 
 
-exports.emaillogin = async function(data, callback){  
-    const app = new Realm.App({ id: data.appId });  
-    let userEmail = await AsyncStorage.getItem('user_email');
-    let userPassword = await AsyncStorage.getItem('user_password'); 
-
-    let user = await login(userEmail, userPassword);
-
-    if(user){ 
-      callback(user);
-    }
-    else{ 
-      
-      callback(null);
-    }
-  
-     
-}
-
-
-exports.appInstance = function(_schemas, _partition){
-  return new Promise((resolve, reject) => {
-      login().then(user => {
-          openRealm(_schemas, _partition).then(realm => {
-              resolve(realm);
-          }); 
-      });
-          
-  });
-}
-
-
-function getRealmApp(){
-  const appConfig = {
-      id:global.appId,
+    const appConfig = {
+      id:  Configure.Realm.appId,
       timeout: 10000,
-  };
+    };
 
-  return new Realm.App(appConfig);  
-}
-
-
-
-
-function openRealm(){
-  return new Promise((resolve, reject) => {  
-
-      if(global.privateRealm && global.realm ){
-        resolve(global.realm);
-        return;
-      } 
-     
-      let configPublic = {
-        schema:  allSchemas,
-        sync: {
-          user: global.user,
-          partitionValue: "public"
-        }
-      }; 
-
-      let configPrivate = {
-        schema: allSchemas,
-        sync: {
-          user: global.user,
-          partitionValue: `user_id=${global.uid}`
-        }
-      };
-
-      try {
-        Realm.open(configPublic).then(realm => {
-          global.realm = realm;
-          Realm.open(configPrivate).then(realmPrivate => {
-            global.privateRealm = realmPrivate;
-            resolve(true);
-          });
-        }); 
-        
-      } catch (error) { 
-        
-      }
+    const app = new Realm.App(appConfig);
+    if(app.currentUser) app.currentUser.logOut();
+    
+    app.emailPasswordAuth.registerUser(userEmail, userPassword).then(result => { 
+      resolve(true)
+    }).catch(err => {
+      resolve(err)
+    }) 
   })
 }
 
 
 
+export const login = (userEmail, userPassword) => {
+  return new Promise((resolve, reject) => { 
 
-function login(email, password){
+    const appConfig = {
+      id:  Configure.Realm.appId,
+      timeout: 10000,
+    };
+
+    const app = new Realm.App(appConfig);
+    //if(app.currentUser) app.currentUser.logOut();
+    const credentials = Realm.Credentials.emailPassword(userEmail, userPassword);
+
+    app.logIn(credentials).then(user => { 
+      global.user = user; 
+      resolve(user);
+    }).catch(err => {
+      reject(err);
+    }) 
+  })
+}
+
+
+export const openRealm = () => {
+
   return new Promise((resolve, reject) => {
+    
 
-      if(global.user && global.uid){
-          resolve(global.user);
-          return;
-      } 
+    if(global.realm && global.privateRealm){
+      resolve(global)
+      return;
+    }
+
+
+    let configPublic = {
+        schema:  [Schema.ChatEntry],
+        sync: {
+          user: global.user,
+          partitionValue: "chat"
+        }
+      }; 
+
+      let configPrivate = {
+        schema: [Schema.UserData],
+        sync: {
+          user: global.user,
+          partitionValue: `${global.uid}`
+        }
+    }; 
       
-      const app = getRealmApp(); 
+    try {
 
-      const allUsers = app.allUsers;
-      for (let index = 0; index < allUsers.length; index++) {
-          const user = allUsers[index];
-          user.logOut();
-      }
+      Realm.open(configPublic).then(realm => {
+        global.realm = realm;
+         
+        Realm.open(configPrivate).then(realmPrivate => { 
 
-      const credentials = Realm.Credentials.emailPassword(
-        email,
-        password
-      );
+          global.privateRealm = realmPrivate;
+          resolve({realm: realm, privateRealm: realmPrivate});
 
-      // Authenticate the user
-      app.logIn(credentials).then(user => { 
-
-          global.user = user;
-          global.app = app;
-          global.uid = user.id;  
-          resolve(user);
+        }).catch(err => {
+          reject(err);
+        })
 
       }).catch(err => {
-
-        
-      });
-  });
+        reject(err);
+      })
+      
+    } catch (error) { 
+      reject(error);
+    }
+    
+  })
 }
- 
- 
 
-exports.logout = async function(callback){  
-  
- 
-  callback();
-}
+
 

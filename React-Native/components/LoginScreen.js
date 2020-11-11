@@ -15,6 +15,7 @@ import {
 import AsyncStorage from '@react-native-community/async-storage';
 import Loader from './Loader'; 
 import Configure from '../config/Config'; 
+import * as RealmLib from '../libs/RealmLib'; 
 
 const LoginScreen = props => {
   
@@ -58,28 +59,24 @@ const LoginScreen = props => {
 
     setLoading(true);  
 
-    const appConfig = {
-      id:  global.appId,
-      timeout: 10000,
-    };
-
-    const app = new Realm.App(appConfig); // pass in the appConfig variable that you created earlier 
-    if(app.currentUser) app.currentUser.logOut();
-    
-    const credentials = Realm.Credentials.emailPassword(userEmail, userPassword);
-
-    app.logIn(credentials).then(user => {
-        setLoading(false); 
-        global.user = user;
-        AsyncStorage.setItem('user_id', user.id);  
-        
+    RealmLib.login(userEmail, userPassword).then(user => {
+     
+      AsyncStorage.setItem('user_id', user.id);
+      
+      RealmLib.openRealm().then(result => {
+        setLoading(false);  
+       
+        let userData = result.privateRealm.objects(Configure.Realm.userData).filtered(`uid = '${global.user.id}'`); 
+        global.userData = userData[0]; 
         props.navigation.navigate('DrawerNavigationRoutes'); 
-    })
-    .catch(error => {
-        setLoading(false);
-        setErrortext(error.message);
-    })
-
+      }).catch(err => {
+        setErrortext(err.message);
+      })
+      
+    }).catch(err => {
+      setLoading(false);
+      setErrortext(err.message);
+    }) 
      
   };
 
