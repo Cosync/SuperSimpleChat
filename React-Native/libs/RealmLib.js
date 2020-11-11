@@ -31,8 +31,7 @@ import Realm from "realm";
 import AsyncStorage from '@react-native-community/async-storage';
 import Schema from '../config/Schema';
 
-let allSchemas = [
-    Schema.CosyncAsset, 
+let allSchemas = [ 
     Schema.ChatEntry
 ];
 

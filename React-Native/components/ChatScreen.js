@@ -17,11 +17,7 @@ const ChatScreen = () => {
   useEffect(() => {
     openRealm();
 
-    async function openRealm(){ 
-      
-
-      let user_id_val = await AsyncStorage.getItem('user_id');
-      if(!user_id_val) props.navigation.navigate('Auth'); 
+    async function openRealm(){  
 
       global.appId = Configure.Realm.appId;
 
@@ -38,6 +34,7 @@ const ChatScreen = () => {
         const app = new Realm.App(appConfig); 
         const credentials = Realm.Credentials.emailPassword(userEmail, userPassword); 
         let user = await app.logIn(credentials);
+        AsyncStorage.setItem('user_id', user.id);  
         global.user = user; 
       }
       
@@ -45,10 +42,10 @@ const ChatScreen = () => {
       
       if(!global.realm) {
         const config = {
-          schema: [Schema.CosyncAsset, Schema.ChatEntry],
+          schema: [Schema.ChatEntry],
           sync: {
               user: global.user,
-              partitionValue: 'public',
+              partitionValue: Configure.Realm.partition,
           }
         };
 
@@ -59,7 +56,7 @@ const ChatScreen = () => {
         
       } 
 
-      const results = global.realm.objects('ChatEntry'); 
+      const results = global.realm.objects(Configure.Realm.table); 
       let chatEntryList =  results.sorted("createdAt", true); 
       results.addListener(eventListener);  
 
@@ -79,13 +76,11 @@ const ChatScreen = () => {
 
     let item = messages[0];
     global.realm.write(() => { 
-      global.realm.create("ChatEntry", 
+      global.realm.create(Configure.Realm.table, 
         { _id: new ObjectId(),
-          _partition: 'public',
-          chatId: "testchatId",
-          uid: global.user.id,
-          content: item.text, 
-          entryType: 'text',
+          _partition: Configure.Realm.partition,
+          name: global.user.id,
+          text: item.text,  
           createdAt: new Date().toISOString()
       }); 
     });
@@ -112,19 +107,17 @@ const ChatScreen = () => {
 
   const formatTextMessage = (message) => { 
     let item = {
-      _id: message._id,
-      uid: message.uid,
-      text: message.content,
-      type: message.entryType,
+      _id: message._id, 
+      text: message.text, 
       createdAt: new Date(message.createdAt).toLocaleString(),
       user: {
-        _id: message.uid,
-        name: 'React Native',
+        _id: message._id,
+        name: message.name,
         avatar: 'https://cosync-assets.s3-us-west-1.amazonaws.com/logo.png',
       }
     };
 
-    if(item.uid == global.user.id) item.user.avatar =  'https://placeimg.com/140/140/any';
+    if(item.name == global.user.id) item.user.avatar =  'https://placeimg.com/140/140/any';
     return item;
   };
 

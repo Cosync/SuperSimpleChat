@@ -1,6 +1,6 @@
  
 import React, { useState, useEffect, useRef } from 'react';
-
+import AsyncStorage from '@react-native-community/async-storage';
 //Import all required component
 import {  StyleSheet,
   TextInput,
@@ -18,11 +18,12 @@ const Register = props => {
   
   let [errortext, setErrortext] = useState('');
   let [infotext, setInfotext] = useState('');
-
+  let [userDisplayName, setUserDisplayName] = useState('');
   let [userEmail, setUserEmail] = useState('');
   let [userPassword, setUserPassword] = useState('');
   let [userConfPassword, setUserConfPassword] = useState('');
   let [loading, setLoading] = useState(false); 
+  const ref_input_email = useRef();
   const ref_input_pwd = useRef();
   const ref_input_conf_pwd = useRef();
 
@@ -42,6 +43,11 @@ const Register = props => {
 
       setErrortext('');
       setInfotext('');
+
+      if (!userDisplayName) {
+        alert('Please fill Display Name');
+        return;
+      }
 
       if (!userEmail) {
         alert('Please fill Email');
@@ -82,8 +88,15 @@ const Register = props => {
       
       app.emailPasswordAuth.registerUser(userEmail, userPassword).then(result => {
          
+        
         setLoading(false);  
         setInfotext('Your account has been created. Please log in to the app.');
+
+        
+        AsyncStorage.setItem('user_email', userEmail);  
+        AsyncStorage.setItem('user_password', userPassword);  
+        
+        props.navigation.navigate('DrawerNavigationRoutes'); 
 
       }).catch(err => { 
         setLoading(false);   
@@ -118,15 +131,14 @@ const Register = props => {
             <View style={styles.SectionStyle}>
               <TextInput
                 style={styles.inputStyle}
-                onChangeText={UserEmail => setUserEmail(UserEmail)}
+                onChangeText={value => setUserDisplayName(value)}
                 underlineColorAndroid="#4638ab"
-                placeholder="Enter Email" //dummy@abc.com
-                //placeholderTextColor="#4638ab"
+                placeholder="Enter Display Name"
                 autoCapitalize="none" 
                 autoCorrect={false}
-                keyboardType="email-address" 
+                keyboardType="default" 
                 returnKeyType="next" 
-                onSubmitEditing={() => ref_input_pwd.current.focus()}
+                onSubmitEditing={() => ref_input_email.current.focus()}
                 blurOnSubmit={false}
               />
             </View>
@@ -134,7 +146,23 @@ const Register = props => {
             <View style={styles.SectionStyle}>
               <TextInput
                 style={styles.inputStyle}
-                onChangeText={UserPassword => setUserPassword(UserPassword)}
+                onChangeText={value => setUserEmail(value)}
+                underlineColorAndroid="#4638ab"
+                placeholder="Enter Email"
+                autoCapitalize="none" 
+                autoCorrect={false}
+                keyboardType="email-address" 
+                returnKeyType="next" 
+                onSubmitEditing={() => ref_input_pwd.current.focus()}
+                blurOnSubmit={false}
+                ref={ref_input_email}
+              />
+            </View>
+
+            <View style={styles.SectionStyle}>
+              <TextInput
+                style={styles.inputStyle}
+                onChangeText={value => setUserPassword(value)}
                 underlineColorAndroid="#4638ab"
                 placeholder="Enter Password"
                 keyboardType="default" 
@@ -149,7 +177,7 @@ const Register = props => {
             <View style={styles.SectionStyle}>
               <TextInput
                 style={styles.inputStyle}
-                onChangeText={UserConfPassword => setUserConfPassword(UserConfPassword)}
+                onChangeText={value => setUserConfPassword(value)}
                 underlineColorAndroid="#4638ab"
                 placeholder="Enter Confirmed Password"
                 keyboardType="default"

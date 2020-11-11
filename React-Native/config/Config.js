@@ -1,3 +1,5 @@
 exports.Realm = {
-    appId: 'application-0-ffolc'
+    appId: 'supersimplechat-nvwlr',
+    partition: 'chat',
+    table: 'ChatEntry'
 }
