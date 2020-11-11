@@ -43,7 +43,7 @@ Deploy the Realm App
 VSCode Project
 
 - Download the source code from Github
-- Set up React Native if you dont have it yet 'npm install -g react-native-cli'
+- Set up React Native if you dont have it yet 'npm install -g react-native-cli' (Instruction: "https://reactnative.dev/docs/environment-setup")
 - In the root folder of source code type 'npm install' at the command line
 - Then type 'cd ios && pod install && cd ..'
 - Set the Realm id in config/Config.js
