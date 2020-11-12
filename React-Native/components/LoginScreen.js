@@ -102,7 +102,7 @@ const LoginScreen = props => {
               <TextInput
                 style={styles.inputStyle}
                 onChangeText={UserEmail => setUserEmail(UserEmail)}
-                underlineColorAndroid="#4638ab"
+                //underlineColorAndroid="#4638ab"
                 placeholder="Enter Email" 
                 autoCapitalize="none"
                 keyboardType="email-address" 
@@ -116,7 +116,7 @@ const LoginScreen = props => {
               <TextInput
                 style={styles.inputStyle}
                 onChangeText={UserPassword => setUserPassword(UserPassword)}
-                underlineColorAndroid="#4638ab"
+                //underlineColorAndroid="#4638ab"
                 placeholder="Enter Password" 
                 keyboardType="default" 
                 returnKeyType="go"

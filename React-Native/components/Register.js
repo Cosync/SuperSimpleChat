@@ -152,7 +152,7 @@ const Register = props => {
               <TextInput
                 style={styles.inputStyle}
                 onChangeText={value => setUserDisplayName(value)}
-                underlineColorAndroid="#4638ab"
+                //underlineColorAndroid="#4638ab"
                 placeholder="Enter Display Name"
                 autoCapitalize="none" 
                 autoCorrect={false}
@@ -167,7 +167,7 @@ const Register = props => {
               <TextInput
                 style={styles.inputStyle}
                 onChangeText={value => setUserEmail(value)}
-                underlineColorAndroid="#4638ab"
+                //underlineColorAndroid="#4638ab"
                 placeholder="Enter Email"
                 autoCapitalize="none" 
                 autoCorrect={false}
@@ -183,7 +183,7 @@ const Register = props => {
               <TextInput
                 style={styles.inputStyle}
                 onChangeText={value => setUserPassword(value)}
-                underlineColorAndroid="#4638ab"
+                //underlineColorAndroid="#4638ab"
                 placeholder="Enter Password"
                 keyboardType="default" 
                 returnKeyType="go" 
