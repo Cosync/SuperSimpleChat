@@ -14,7 +14,7 @@ const ChatScreen = () => {
   global.user = global.user ? global.user : {};
 
   const [messages, setMessages] = useState([]); 
-  const [userName, setUserName] = useState([]);
+  const [userName, setUserName] = useState('');
 
   useEffect(() => {
 
@@ -40,8 +40,9 @@ const ChatScreen = () => {
       if(!global.userData || global.userData.name){
         let userData = global.privateRealm.objects(Configure.Realm.userData).filtered(`uid = '${global.user.id}'`); 
         global.userData = userData[0]; 
-        setUserName(global.userData.name);
+        if(global.userData) setUserName(global.userData.name);
       }
+      else setUserName(global.userData.name);
 
       global.realm.removeAllListeners();  
       const results = global.realm.objects(Configure.Realm.chatTable); 
@@ -60,7 +61,10 @@ const ChatScreen = () => {
   }, [])
 
   const onSend = useCallback((messages = []) => {
+    
     setMessages(previousMessages => GiftedChat.append(previousMessages, messages));
+
+    if(!global.realm) return;
 
     let item = messages[0];
     global.realm.write(() => { 

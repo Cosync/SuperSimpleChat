@@ -107,15 +107,15 @@ const Register = props => {
 
     return new Promise((resolve, reject) => { 
 
-      RealmLib.openRealm().then(realm => {
-        
-
+      RealmLib.openRealm().then(realm => { 
         let userData = { 
           _id: new ObjectId(),
           _partition: `${global.user.id}`,
           name: name, 
           uid: global.user.id
         }; 
+
+        global.userData = userData;
 
         global.privateRealm.write(() => { 
           global.privateRealm.create(Configure.Realm.userData, userData); 

@@ -59,8 +59,7 @@ export const login = (userEmail, userPassword) => {
       timeout: 10000,
     };
 
-    const app = new Realm.App(appConfig);
-    //if(app.currentUser) app.currentUser.logOut();
+    const app = new Realm.App(appConfig); 
     const credentials = Realm.Credentials.emailPassword(userEmail, userPassword);
 
     app.logIn(credentials).then(user => { 
@@ -96,7 +95,7 @@ export const openRealm = () => {
         schema: [Schema.UserData],
         sync: {
           user: global.user,
-          partitionValue: `${global.uid}`
+          partitionValue: `${global.user.id}`
         }
     }; 
       
