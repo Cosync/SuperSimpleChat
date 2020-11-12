@@ -121,6 +121,7 @@ const ChatScreen = () => {
     <GiftedChat
       renderLoading={() =>  <ActivityIndicator size="large" color="#0000ff"  animating={true} style={styles.activityIndicator}/>}
       messages={messages}
+      renderUsernameOnMessage = {true}
       onSend={messages => onSend(messages)}
       user={{ _id: userName}}/>
   )
