@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		10E4168552DBBC6EC469F3ED /* Pods_SuperSimpleChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517310602D69904AC194A4BF /* Pods_SuperSimpleChat.framework */; };
+		5629D9EB261E31D500694B85 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 5629D9EA261E31D500694B85 /* Realm */; };
+		5629D9ED261E31D500694B85 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5629D9EC261E31D500694B85 /* RealmSwift */; };
 		567BFD9324C621AA0038CD27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567BFD9224C621AA0038CD27 /* AppDelegate.swift */; };
 		567BFD9524C621AA0038CD27 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567BFD9424C621AA0038CD27 /* SceneDelegate.swift */; };
 		567BFD9724C621AA0038CD27 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567BFD9624C621AA0038CD27 /* ContentView.swift */; };
@@ -26,8 +27,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		26DB45C64E625F088D990FF4 /* Pods-SuperSimpleChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperSimpleChat.debug.xcconfig"; path = "Target Support Files/Pods-SuperSimpleChat/Pods-SuperSimpleChat.debug.xcconfig"; sourceTree = "<group>"; };
-		517310602D69904AC194A4BF /* Pods_SuperSimpleChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SuperSimpleChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		567BFD8F24C621AA0038CD27 /* SuperSimpleChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperSimpleChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		567BFD9224C621AA0038CD27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		567BFD9424C621AA0038CD27 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,7 +44,6 @@
 		567BFDB224C6369B0038CD27 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		567BFDB424C636A60038CD27 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		567BFDB624C645A60038CD27 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
-		B96381D6F8A0ED6A41E1B9C1 /* Pods-SuperSimpleChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperSimpleChat.release.xcconfig"; path = "Target Support Files/Pods-SuperSimpleChat/Pods-SuperSimpleChat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +51,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10E4168552DBBC6EC469F3ED /* Pods_SuperSimpleChat.framework in Frameworks */,
+				5629D9ED261E31D500694B85 /* RealmSwift in Frameworks */,
+				5629D9EB261E31D500694B85 /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,7 +62,6 @@
 		037EB555DB759417AAC0F08D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				517310602D69904AC194A4BF /* Pods_SuperSimpleChat.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -73,7 +71,6 @@
 			children = (
 				567BFD9124C621AA0038CD27 /* SuperSimpleChat */,
 				567BFD9024C621AA0038CD27 /* Products */,
-				C599258E0FFFEC6CE38BAA86 /* Pods */,
 				037EB555DB759417AAC0F08D /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -117,15 +114,6 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		C599258E0FFFEC6CE38BAA86 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				26DB45C64E625F088D990FF4 /* Pods-SuperSimpleChat.debug.xcconfig */,
-				B96381D6F8A0ED6A41E1B9C1 /* Pods-SuperSimpleChat.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -133,17 +121,19 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 567BFDA324C621AC0038CD27 /* Build configuration list for PBXNativeTarget "SuperSimpleChat" */;
 			buildPhases = (
-				47B4A480A91DAC9D09912B76 /* [CP] Check Pods Manifest.lock */,
 				567BFD8B24C621AA0038CD27 /* Sources */,
 				567BFD8C24C621AA0038CD27 /* Frameworks */,
 				567BFD8D24C621AA0038CD27 /* Resources */,
-				50FF1B622801AE5EE63DB927 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = SuperSimpleChat;
+			packageProductDependencies = (
+				5629D9EA261E31D500694B85 /* Realm */,
+				5629D9EC261E31D500694B85 /* RealmSwift */,
+			);
 			productName = SuperSimpleChat;
 			productReference = 567BFD8F24C621AA0038CD27 /* SuperSimpleChat.app */;
 			productType = "com.apple.product-type.application";
@@ -172,6 +162,9 @@
 				Base,
 			);
 			mainGroup = 567BFD8624C621AA0038CD27;
+			packageReferences = (
+				5629D9E9261E31D500694B85 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+			);
 			productRefGroup = 567BFD9024C621AA0038CD27 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -194,48 +187,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		47B4A480A91DAC9D09912B76 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SuperSimpleChat-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		50FF1B622801AE5EE63DB927 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SuperSimpleChat/Pods-SuperSimpleChat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SuperSimpleChat/Pods-SuperSimpleChat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SuperSimpleChat/Pods-SuperSimpleChat-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		567BFD8B24C621AA0038CD27 /* Sources */ = {
@@ -388,7 +339,6 @@
 		};
 		567BFDA424C621AC0038CD27 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 26DB45C64E625F088D990FF4 /* Pods-SuperSimpleChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -409,7 +359,6 @@
 		};
 		567BFDA524C621AC0038CD27 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B96381D6F8A0ED6A41E1B9C1 /* Pods-SuperSimpleChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -450,6 +399,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5629D9E9261E31D500694B85 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.7.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5629D9EA261E31D500694B85 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5629D9E9261E31D500694B85 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		5629D9EC261E31D500694B85 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5629D9E9261E31D500694B85 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 567BFD8724C621AA0038CD27 /* Project object */;
 }
