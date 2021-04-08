@@ -26,10 +26,20 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var appState: AppState
-    @EnvironmentObject var userDataState: UserDataState
-    @EnvironmentObject var chatEntryState: ChatEntryState
 
+    var body: some View {
+
+        ContentTabView()
+            .environmentObject(AppState())
+            .environmentObject(UserDataState())
+            .environmentObject(ChatEntryState())
+    }
+}
+
+struct ContentTabView: View {
+    
+    @EnvironmentObject var appState: AppState
+    
     var body: some View {
 
         Group {

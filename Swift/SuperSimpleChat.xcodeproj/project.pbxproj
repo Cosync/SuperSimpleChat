@@ -7,109 +7,92 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5629D9EB261E31D500694B85 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 5629D9EA261E31D500694B85 /* Realm */; };
-		5629D9ED261E31D500694B85 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5629D9EC261E31D500694B85 /* RealmSwift */; };
-		567BFD9324C621AA0038CD27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567BFD9224C621AA0038CD27 /* AppDelegate.swift */; };
-		567BFD9524C621AA0038CD27 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567BFD9424C621AA0038CD27 /* SceneDelegate.swift */; };
-		567BFD9724C621AA0038CD27 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567BFD9624C621AA0038CD27 /* ContentView.swift */; };
-		567BFD9924C621AC0038CD27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 567BFD9824C621AC0038CD27 /* Assets.xcassets */; };
-		567BFD9C24C621AC0038CD27 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 567BFD9B24C621AC0038CD27 /* Preview Assets.xcassets */; };
-		567BFD9F24C621AC0038CD27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 567BFD9D24C621AC0038CD27 /* LaunchScreen.storyboard */; };
-		567BFDA724C634810038CD27 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567BFDA624C634810038CD27 /* Constants.swift */; };
-		567BFDA924C634970038CD27 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567BFDA824C634970038CD27 /* RealmManager.swift */; };
-		567BFDAB24C634B30038CD27 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567BFDAA24C634B30038CD27 /* Models.swift */; };
-		567BFDAD24C634C40038CD27 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567BFDAC24C634C40038CD27 /* AppState.swift */; };
-		567BFDAF24C634D70038CD27 /* UserDataState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567BFDAE24C634D70038CD27 /* UserDataState.swift */; };
-		567BFDB124C634F30038CD27 /* ChatEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567BFDB024C634F30038CD27 /* ChatEntry.swift */; };
-		567BFDB324C6369B0038CD27 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567BFDB224C6369B0038CD27 /* LoginView.swift */; };
-		567BFDB524C636A60038CD27 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567BFDB424C636A60038CD27 /* ChatView.swift */; };
-		567BFDB724C645A70038CD27 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 567BFDB624C645A60038CD27 /* README.md */; };
+		5629DA1B261F329C00694B85 /* SuperSimpleChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5629DA1A261F329C00694B85 /* SuperSimpleChatApp.swift */; };
+		5629DA1D261F329C00694B85 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5629DA1C261F329C00694B85 /* ContentView.swift */; };
+		5629DA1F261F329C00694B85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5629DA1E261F329C00694B85 /* Assets.xcassets */; };
+		5629DA22261F329C00694B85 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5629DA21261F329C00694B85 /* Preview Assets.xcassets */; };
+		5629DA2C261F330600694B85 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 5629DA2B261F330600694B85 /* Realm */; };
+		5629DA2E261F330600694B85 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5629DA2D261F330600694B85 /* RealmSwift */; };
+		5629DA33261F348100694B85 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5629DA30261F348100694B85 /* AppState.swift */; };
+		5629DA34261F348100694B85 /* ChatEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5629DA31261F348100694B85 /* ChatEntry.swift */; };
+		5629DA35261F348100694B85 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5629DA32261F348100694B85 /* ChatView.swift */; };
+		5629DA3C261F348A00694B85 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5629DA37261F348A00694B85 /* Models.swift */; };
+		5629DA3D261F348A00694B85 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5629DA38261F348A00694B85 /* RealmManager.swift */; };
+		5629DA3E261F348A00694B85 /* UserDataState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5629DA39261F348A00694B85 /* UserDataState.swift */; };
+		5629DA3F261F348A00694B85 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5629DA3A261F348A00694B85 /* Constants.swift */; };
+		5629DA40261F348A00694B85 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5629DA3B261F348A00694B85 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		567BFD8F24C621AA0038CD27 /* SuperSimpleChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperSimpleChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		567BFD9224C621AA0038CD27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		567BFD9424C621AA0038CD27 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		567BFD9624C621AA0038CD27 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		567BFD9824C621AC0038CD27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		567BFD9B24C621AC0038CD27 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		567BFD9E24C621AC0038CD27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		567BFDA024C621AC0038CD27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		567BFDA624C634810038CD27 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		567BFDA824C634970038CD27 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
-		567BFDAA24C634B30038CD27 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		567BFDAC24C634C40038CD27 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		567BFDAE24C634D70038CD27 /* UserDataState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataState.swift; sourceTree = "<group>"; };
-		567BFDB024C634F30038CD27 /* ChatEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatEntry.swift; sourceTree = "<group>"; };
-		567BFDB224C6369B0038CD27 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		567BFDB424C636A60038CD27 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
-		567BFDB624C645A60038CD27 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		5629DA17261F329C00694B85 /* SuperSimpleChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperSimpleChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5629DA1A261F329C00694B85 /* SuperSimpleChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperSimpleChatApp.swift; sourceTree = "<group>"; };
+		5629DA1C261F329C00694B85 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5629DA1E261F329C00694B85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5629DA21261F329C00694B85 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5629DA23261F329C00694B85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5629DA30261F348100694B85 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		5629DA31261F348100694B85 /* ChatEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatEntry.swift; sourceTree = "<group>"; };
+		5629DA32261F348100694B85 /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		5629DA37261F348A00694B85 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		5629DA38261F348A00694B85 /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		5629DA39261F348A00694B85 /* UserDataState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataState.swift; sourceTree = "<group>"; };
+		5629DA3A261F348A00694B85 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5629DA3B261F348A00694B85 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		567BFD8C24C621AA0038CD27 /* Frameworks */ = {
+		5629DA14261F329C00694B85 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5629D9ED261E31D500694B85 /* RealmSwift in Frameworks */,
-				5629D9EB261E31D500694B85 /* Realm in Frameworks */,
+				5629DA2E261F330600694B85 /* RealmSwift in Frameworks */,
+				5629DA2C261F330600694B85 /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		037EB555DB759417AAC0F08D /* Frameworks */ = {
+		5629DA0E261F329C00694B85 = {
 			isa = PBXGroup;
 			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		567BFD8624C621AA0038CD27 = {
-			isa = PBXGroup;
-			children = (
-				567BFD9124C621AA0038CD27 /* SuperSimpleChat */,
-				567BFD9024C621AA0038CD27 /* Products */,
-				037EB555DB759417AAC0F08D /* Frameworks */,
+				5629DA19261F329C00694B85 /* SuperSimpleChat */,
+				5629DA18261F329C00694B85 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		567BFD9024C621AA0038CD27 /* Products */ = {
+		5629DA18261F329C00694B85 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				567BFD8F24C621AA0038CD27 /* SuperSimpleChat.app */,
+				5629DA17261F329C00694B85 /* SuperSimpleChat.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		567BFD9124C621AA0038CD27 /* SuperSimpleChat */ = {
+		5629DA19261F329C00694B85 /* SuperSimpleChat */ = {
 			isa = PBXGroup;
 			children = (
-				567BFDB624C645A60038CD27 /* README.md */,
-				567BFDA624C634810038CD27 /* Constants.swift */,
-				567BFD9224C621AA0038CD27 /* AppDelegate.swift */,
-				567BFD9424C621AA0038CD27 /* SceneDelegate.swift */,
-				567BFD9624C621AA0038CD27 /* ContentView.swift */,
-				567BFDB224C6369B0038CD27 /* LoginView.swift */,
-				567BFDB424C636A60038CD27 /* ChatView.swift */,
-				567BFDA824C634970038CD27 /* RealmManager.swift */,
-				567BFDAA24C634B30038CD27 /* Models.swift */,
-				567BFDAC24C634C40038CD27 /* AppState.swift */,
-				567BFDAE24C634D70038CD27 /* UserDataState.swift */,
-				567BFDB024C634F30038CD27 /* ChatEntry.swift */,
-				567BFD9824C621AC0038CD27 /* Assets.xcassets */,
-				567BFD9D24C621AC0038CD27 /* LaunchScreen.storyboard */,
-				567BFDA024C621AC0038CD27 /* Info.plist */,
-				567BFD9A24C621AC0038CD27 /* Preview Content */,
+				5629DA3A261F348A00694B85 /* Constants.swift */,
+				5629DA30261F348100694B85 /* AppState.swift */,
+				5629DA31261F348100694B85 /* ChatEntry.swift */,
+				5629DA32261F348100694B85 /* ChatView.swift */,
+				5629DA1A261F329C00694B85 /* SuperSimpleChatApp.swift */,
+				5629DA1C261F329C00694B85 /* ContentView.swift */,
+				5629DA3B261F348A00694B85 /* LoginView.swift */,
+				5629DA37261F348A00694B85 /* Models.swift */,
+				5629DA38261F348A00694B85 /* RealmManager.swift */,
+				5629DA39261F348A00694B85 /* UserDataState.swift */,
+				5629DA1E261F329C00694B85 /* Assets.xcassets */,
+				5629DA23261F329C00694B85 /* Info.plist */,
+				5629DA20261F329C00694B85 /* Preview Content */,
 			);
 			path = SuperSimpleChat;
 			sourceTree = "<group>";
 		};
-		567BFD9A24C621AC0038CD27 /* Preview Content */ = {
+		5629DA20261F329C00694B85 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				567BFD9B24C621AC0038CD27 /* Preview Assets.xcassets */,
+				5629DA21261F329C00694B85 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -117,13 +100,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		567BFD8E24C621AA0038CD27 /* SuperSimpleChat */ = {
+		5629DA16261F329C00694B85 /* SuperSimpleChat */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 567BFDA324C621AC0038CD27 /* Build configuration list for PBXNativeTarget "SuperSimpleChat" */;
+			buildConfigurationList = 5629DA26261F329C00694B85 /* Build configuration list for PBXNativeTarget "SuperSimpleChat" */;
 			buildPhases = (
-				567BFD8B24C621AA0038CD27 /* Sources */,
-				567BFD8C24C621AA0038CD27 /* Frameworks */,
-				567BFD8D24C621AA0038CD27 /* Resources */,
+				5629DA13261F329C00694B85 /* Sources */,
+				5629DA14261F329C00694B85 /* Frameworks */,
+				5629DA15261F329C00694B85 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -131,29 +114,28 @@
 			);
 			name = SuperSimpleChat;
 			packageProductDependencies = (
-				5629D9EA261E31D500694B85 /* Realm */,
-				5629D9EC261E31D500694B85 /* RealmSwift */,
+				5629DA2B261F330600694B85 /* Realm */,
+				5629DA2D261F330600694B85 /* RealmSwift */,
 			);
 			productName = SuperSimpleChat;
-			productReference = 567BFD8F24C621AA0038CD27 /* SuperSimpleChat.app */;
+			productReference = 5629DA17261F329C00694B85 /* SuperSimpleChat.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		567BFD8724C621AA0038CD27 /* Project object */ = {
+		5629DA0F261F329C00694B85 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1200;
-				ORGANIZATIONNAME = cosync;
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
 				TargetAttributes = {
-					567BFD8E24C621AA0038CD27 = {
-						CreatedOnToolsVersion = 11.6;
+					5629DA16261F329C00694B85 = {
+						CreatedOnToolsVersion = 12.4;
 					};
 				};
 			};
-			buildConfigurationList = 567BFD8A24C621AA0038CD27 /* Build configuration list for PBXProject "SuperSimpleChat" */;
+			buildConfigurationList = 5629DA12261F329C00694B85 /* Build configuration list for PBXProject "SuperSimpleChat" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -161,67 +143,53 @@
 				en,
 				Base,
 			);
-			mainGroup = 567BFD8624C621AA0038CD27;
+			mainGroup = 5629DA0E261F329C00694B85;
 			packageReferences = (
-				5629D9E9261E31D500694B85 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				5629DA2A261F330600694B85 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 			);
-			productRefGroup = 567BFD9024C621AA0038CD27 /* Products */;
+			productRefGroup = 5629DA18261F329C00694B85 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				567BFD8E24C621AA0038CD27 /* SuperSimpleChat */,
+				5629DA16261F329C00694B85 /* SuperSimpleChat */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		567BFD8D24C621AA0038CD27 /* Resources */ = {
+		5629DA15261F329C00694B85 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				567BFD9F24C621AC0038CD27 /* LaunchScreen.storyboard in Resources */,
-				567BFD9C24C621AC0038CD27 /* Preview Assets.xcassets in Resources */,
-				567BFDB724C645A70038CD27 /* README.md in Resources */,
-				567BFD9924C621AC0038CD27 /* Assets.xcassets in Resources */,
+				5629DA22261F329C00694B85 /* Preview Assets.xcassets in Resources */,
+				5629DA1F261F329C00694B85 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		567BFD8B24C621AA0038CD27 /* Sources */ = {
+		5629DA13261F329C00694B85 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				567BFDAF24C634D70038CD27 /* UserDataState.swift in Sources */,
-				567BFD9324C621AA0038CD27 /* AppDelegate.swift in Sources */,
-				567BFD9524C621AA0038CD27 /* SceneDelegate.swift in Sources */,
-				567BFDAD24C634C40038CD27 /* AppState.swift in Sources */,
-				567BFDB524C636A60038CD27 /* ChatView.swift in Sources */,
-				567BFDA924C634970038CD27 /* RealmManager.swift in Sources */,
-				567BFDAB24C634B30038CD27 /* Models.swift in Sources */,
-				567BFD9724C621AA0038CD27 /* ContentView.swift in Sources */,
-				567BFDB124C634F30038CD27 /* ChatEntry.swift in Sources */,
-				567BFDB324C6369B0038CD27 /* LoginView.swift in Sources */,
-				567BFDA724C634810038CD27 /* Constants.swift in Sources */,
+				5629DA3E261F348A00694B85 /* UserDataState.swift in Sources */,
+				5629DA34261F348100694B85 /* ChatEntry.swift in Sources */,
+				5629DA33261F348100694B85 /* AppState.swift in Sources */,
+				5629DA35261F348100694B85 /* ChatView.swift in Sources */,
+				5629DA3C261F348A00694B85 /* Models.swift in Sources */,
+				5629DA1D261F329C00694B85 /* ContentView.swift in Sources */,
+				5629DA3D261F348A00694B85 /* RealmManager.swift in Sources */,
+				5629DA1B261F329C00694B85 /* SuperSimpleChatApp.swift in Sources */,
+				5629DA40261F348A00694B85 /* LoginView.swift in Sources */,
+				5629DA3F261F348A00694B85 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		567BFD9D24C621AC0038CD27 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				567BFD9E24C621AC0038CD27 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		567BFDA124C621AC0038CD27 /* Debug */ = {
+		5629DA24261F329C00694B85 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -272,7 +240,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -282,7 +250,7 @@
 			};
 			name = Debug;
 		};
-		567BFDA224C621AC0038CD27 /* Release */ = {
+		5629DA25261F329C00694B85 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -327,7 +295,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -337,15 +305,17 @@
 			};
 			name = Release;
 		};
-		567BFDA424C621AC0038CD27 /* Debug */ = {
+		5629DA27261F329C00694B85 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SuperSimpleChat/Preview Content\"";
 				DEVELOPMENT_TEAM = WQQLK89MX8;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SuperSimpleChat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -357,15 +327,17 @@
 			};
 			name = Debug;
 		};
-		567BFDA524C621AC0038CD27 /* Release */ = {
+		5629DA28261F329C00694B85 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SuperSimpleChat/Preview Content\"";
 				DEVELOPMENT_TEAM = WQQLK89MX8;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SuperSimpleChat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -380,20 +352,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		567BFD8A24C621AA0038CD27 /* Build configuration list for PBXProject "SuperSimpleChat" */ = {
+		5629DA12261F329C00694B85 /* Build configuration list for PBXProject "SuperSimpleChat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				567BFDA124C621AC0038CD27 /* Debug */,
-				567BFDA224C621AC0038CD27 /* Release */,
+				5629DA24261F329C00694B85 /* Debug */,
+				5629DA25261F329C00694B85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		567BFDA324C621AC0038CD27 /* Build configuration list for PBXNativeTarget "SuperSimpleChat" */ = {
+		5629DA26261F329C00694B85 /* Build configuration list for PBXNativeTarget "SuperSimpleChat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				567BFDA424C621AC0038CD27 /* Debug */,
-				567BFDA524C621AC0038CD27 /* Release */,
+				5629DA27261F329C00694B85 /* Debug */,
+				5629DA28261F329C00694B85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -401,7 +373,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		5629D9E9261E31D500694B85 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+		5629DA2A261F330600694B85 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cocoa.git";
 			requirement = {
@@ -412,17 +384,17 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5629D9EA261E31D500694B85 /* Realm */ = {
+		5629DA2B261F330600694B85 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5629D9E9261E31D500694B85 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			package = 5629DA2A261F330600694B85 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = Realm;
 		};
-		5629D9EC261E31D500694B85 /* RealmSwift */ = {
+		5629DA2D261F330600694B85 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5629D9E9261E31D500694B85 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			package = 5629DA2A261F330600694B85 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = 567BFD8724C621AA0038CD27 /* Project object */;
+	rootObject = 5629DA0F261F329C00694B85 /* Project object */;
 }
