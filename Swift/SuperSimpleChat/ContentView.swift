@@ -32,7 +32,6 @@ struct ContentView: View {
         ContentTabView()
             .environmentObject(AppState())
             .environmentObject(UserDataState())
-            .environmentObject(ChatEntryState())
     }
 }
 
@@ -47,6 +46,7 @@ struct ContentTabView: View {
                 LoginView()
             } else {
                 ChatView()
+                    .environment(\.realmConfiguration, RealmManager.shared.app.currentUser!.configuration(partitionValue: "chat"))
             }
         }
     }
@@ -55,7 +55,5 @@ struct ContentTabView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(AppState())
-            .environmentObject(UserDataState())
     }
 }

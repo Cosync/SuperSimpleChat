@@ -14,7 +14,6 @@
 		5629DA2C261F330600694B85 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 5629DA2B261F330600694B85 /* Realm */; };
 		5629DA2E261F330600694B85 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5629DA2D261F330600694B85 /* RealmSwift */; };
 		5629DA33261F348100694B85 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5629DA30261F348100694B85 /* AppState.swift */; };
-		5629DA34261F348100694B85 /* ChatEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5629DA31261F348100694B85 /* ChatEntry.swift */; };
 		5629DA35261F348100694B85 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5629DA32261F348100694B85 /* ChatView.swift */; };
 		5629DA3C261F348A00694B85 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5629DA37261F348A00694B85 /* Models.swift */; };
 		5629DA3D261F348A00694B85 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5629DA38261F348A00694B85 /* RealmManager.swift */; };
@@ -31,7 +30,6 @@
 		5629DA21261F329C00694B85 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5629DA23261F329C00694B85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5629DA30261F348100694B85 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		5629DA31261F348100694B85 /* ChatEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatEntry.swift; sourceTree = "<group>"; };
 		5629DA32261F348100694B85 /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		5629DA37261F348A00694B85 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		5629DA38261F348A00694B85 /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
@@ -74,14 +72,13 @@
 			children = (
 				5629DA3A261F348A00694B85 /* Constants.swift */,
 				5629DA30261F348100694B85 /* AppState.swift */,
-				5629DA31261F348100694B85 /* ChatEntry.swift */,
-				5629DA32261F348100694B85 /* ChatView.swift */,
+				5629DA39261F348A00694B85 /* UserDataState.swift */,
 				5629DA1A261F329C00694B85 /* SuperSimpleChatApp.swift */,
 				5629DA1C261F329C00694B85 /* ContentView.swift */,
 				5629DA3B261F348A00694B85 /* LoginView.swift */,
+				5629DA32261F348100694B85 /* ChatView.swift */,
 				5629DA37261F348A00694B85 /* Models.swift */,
 				5629DA38261F348A00694B85 /* RealmManager.swift */,
-				5629DA39261F348A00694B85 /* UserDataState.swift */,
 				5629DA1E261F329C00694B85 /* Assets.xcassets */,
 				5629DA23261F329C00694B85 /* Info.plist */,
 				5629DA20261F329C00694B85 /* Preview Content */,
@@ -174,7 +171,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5629DA3E261F348A00694B85 /* UserDataState.swift in Sources */,
-				5629DA34261F348100694B85 /* ChatEntry.swift in Sources */,
 				5629DA33261F348100694B85 /* AppState.swift in Sources */,
 				5629DA35261F348100694B85 /* ChatView.swift in Sources */,
 				5629DA3C261F348A00694B85 /* Models.swift in Sources */,

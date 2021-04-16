@@ -27,6 +27,6 @@ import Foundation
 
 struct Constants {
     
-    static let REALM_APP_ID = "supersimplechat-pouuz" // <- update this with your Realm App ID
+    static let REALM_APP_ID = "supersimplechat-nutfc" // <- update this with your Realm App ID
 
 }

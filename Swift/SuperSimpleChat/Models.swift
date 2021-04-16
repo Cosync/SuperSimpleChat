@@ -26,9 +26,8 @@
 import Foundation
 import RealmSwift
 
-class UserData: Object {
+class UserData: Object, ObjectKeyIdentifiable {
     @objc dynamic var _id = ObjectId.generate()
-    @objc dynamic var _partition = ""
     @objc dynamic var uid = ""
     @objc dynamic var name = ""
     override static func primaryKey() -> String? {
@@ -38,17 +37,15 @@ class UserData: Object {
         return ["uid"]
     }
     
-    convenience init(uid: String, partition: String, name: String) {
+    convenience init(uid: String, name: String) {
         self.init()
-        self._partition = partition
         self.uid = uid
         self.name = name
     }
 }
 
-class ChatEntry: Object {
+class ChatEntry: Object, ObjectKeyIdentifiable {
     @objc dynamic var _id = ObjectId.generate()
-    @objc dynamic var _partition = ""
     @objc dynamic var name = ""
     @objc dynamic var text = ""
     @objc dynamic var createdAt: Date? = nil
@@ -60,9 +57,8 @@ class ChatEntry: Object {
         return ["createdAt"]
     }
     
-    convenience init(partition: String, name: String, text: String) {
+    convenience init(name: String, text: String) {
         self.init()
-        self._partition = partition
         self.name = name
         self.text = text
         self.createdAt = Date()

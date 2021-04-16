@@ -32,7 +32,6 @@ class RealmManager {
             
     var app : App! = nil
     var userRealm: Realm! = nil
-    var chatRealm: Realm! = nil
 
     private init() {
         self.app = App(id: Constants.REALM_APP_ID)
@@ -92,7 +91,7 @@ class RealmManager {
                                         
                     if  let uid = self?.app.currentUser?.id {
                         
-                        let userPublic = UserData(uid: uid, partition: uid, name: name)
+                        let userPublic = UserData(uid: uid, name: name)
                         try! self?.userRealm.write {
 
                             self?.userRealm.add(userPublic)
@@ -121,20 +120,8 @@ class RealmManager {
                 switch result {
                 case .success(let realm):
                     self.userRealm = realm
-                    
-                    // open chat realm
-                    Realm.asyncOpen(configuration: user.configuration(partitionValue: "chat"),
-                    callback: { result in
-                        
-                        switch result {
-                        case .success(let realm):
-                            self.chatRealm = realm
-                            completion(nil)
-                        case .failure(let error):
-                            fatalError("Failed to open realm: \(error)")
-                        }
+                    completion(nil)
 
-                    })
                 case .failure(let error):
                     fatalError("Failed to open realm: \(error)")
                 }

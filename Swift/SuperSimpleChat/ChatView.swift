@@ -7,40 +7,40 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct ChatView: View {
     @EnvironmentObject var appState: AppState
     @EnvironmentObject var userDataState: UserDataState
-    @EnvironmentObject var chatEntryState: ChatEntryState
     @State private var chatText = ""
     
+    @ObservedResults(ChatEntry.self) var chatEntries
+
     func addChatMessage() -> Void {
-        let chatEntry = ChatEntry(partition: "chat", name: userDataState.name, text: self.chatText)
-        try! RealmManager.shared.chatRealm.write {
-            RealmManager.shared.chatRealm.add(chatEntry)
-        }
+        let chatEntry = ChatEntry(name: userDataState.name, text: self.chatText)
+        $chatEntries.append(chatEntry)
         self.chatText = ""
     }
 
     var body: some View {
+        
         NavigationView {
             ZStack {
                 VStack(spacing: 25) {
 
                     List {
-
-                        ForEach(0..<self.chatEntryState.count, id: \.self) { index in
+                        
+                        ForEach(chatEntries.sorted(byKeyPath: "createdAt", ascending: false)) { chatEntry in
                             VStack(alignment: .leading) {
-                                Text(self.chatEntryState.chatEntryName(index))
+                                Text(chatEntry.name)
                                     .foregroundColor(.gray)
                                     .font(Font.caption)
                                     .padding(.bottom)
-                                Text(self.chatEntryState.chatEntryText(index)).font(Font.title)
+                                Text(chatEntry.text).font(Font.title)
                             }
                             .padding()
                             .rotationEffect(.radians(.pi))
                             .scaleEffect(x: -1, y: 1, anchor: .center)
-
                         }
 
                     }
@@ -82,7 +82,6 @@ struct ChatView: View {
                         RealmManager.shared.logout( onCompletion: { (error) in
                                 DispatchQueue.main.sync {
                                     self.appState.target = .login
-                                    self.chatEntryState.cleanup()
                                     self.userDataState.cleanup()
                                 }
                             }
@@ -93,14 +92,5 @@ struct ChatView: View {
             )
             .edgesIgnoringSafeArea(.bottom)
         }
-    }
-}
-
-struct ChatView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChatView()
-        .environmentObject(AppState())
-        .environmentObject(UserDataState())
-        .environmentObject(ChatEntryState())
     }
 }

@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct LoginView: View {
+
     var body: some View {
 
         TabView {
@@ -30,7 +31,8 @@ struct LoginTab: View {
     @State private var password = ""
     @EnvironmentObject var appState: AppState
     @EnvironmentObject var userDataState: UserDataState
-    @EnvironmentObject var chatEntryState: ChatEntryState
+    @State var isLoggingIn = false
+
     var body: some View {
         VStack(spacing: 20) {
             
@@ -50,17 +52,22 @@ struct LoginTab: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .disableAutocorrection(true)
                 .autocapitalization(UITextAutocapitalizationType.none)
+                
+                if isLoggingIn {
+                    ProgressView()
+                }
             }
             .padding(.horizontal)
             
             Divider()
             
             Button(action: {
+                isLoggingIn = true
                 RealmManager.shared.login(self.email, password: self.password, onCompletion: { (error) in
                         DispatchQueue.main.async {
+                            isLoggingIn = false
                             NSLog("Login success")
                             self.userDataState.setup()
-                            self.chatEntryState.setup()
                             self.appState.target = .chat
                         }
                     }
@@ -85,7 +92,7 @@ struct SignupTab: View {
     @State private var name = ""
     @EnvironmentObject var appState: AppState
     @EnvironmentObject var userDataState: UserDataState
-    @EnvironmentObject var chatEntryState: ChatEntryState
+    @State var isLoggingIn = false
     var body: some View {
         VStack(spacing: 20) {
             
@@ -108,6 +115,10 @@ struct SignupTab: View {
                 
                 TextField("Name", text: $name)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                
+                if isLoggingIn {
+                    ProgressView()
+                }
 
             }
             .padding(.horizontal)
@@ -115,11 +126,12 @@ struct SignupTab: View {
             Divider()
             
             Button(action: {
+                isLoggingIn = true
                 RealmManager.shared.signup(self.email, password: self.password, name: self.name, onCompletion: { (error) in
                         DispatchQueue.main.async {
-                            NSLog("Login success")
+                            NSLog("Signup success")
+                            isLoggingIn = false
                             self.userDataState.setup()
-                            self.chatEntryState.setup()
                             self.appState.target = .chat
                         }
                     }
@@ -138,10 +150,3 @@ struct SignupTab: View {
     }
 }
 
-
-
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
-    }
-}
