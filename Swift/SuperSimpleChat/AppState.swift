@@ -23,7 +23,7 @@
 //  Copyright © 2020 cosync. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
 // View table used for routing. Updated when a new view is added
 enum TargetUI: Int {
@@ -44,4 +44,20 @@ struct AlertMessage: Identifiable {
 class AppState: ObservableObject {
     @Published var target: TargetUI = .login
     var context: Any = ""
+}
+
+extension Alert {
+    
+    init(_ message: AlertMessage) {
+        self.init(
+            title: Text(message.title),
+            message: Text(message.message),
+            dismissButton: .default(Text("OK"), action: {
+                if (message.target != .login) {
+                    message.state.target = message.target
+                }
+                return;
+            })
+        )
+    }
 }

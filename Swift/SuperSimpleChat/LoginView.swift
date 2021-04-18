@@ -32,7 +32,12 @@ struct LoginTab: View {
     @EnvironmentObject var appState: AppState
     @EnvironmentObject var userDataState: UserDataState
     @State var isLoggingIn = false
+    @State private var message: AlertMessage? = nil
 
+    func showLoginInvalidParameters(){
+        self.message = AlertMessage(title: "Login Failed", message: "You have entered an invalid handle or password.", target: .login, state: self.appState)
+    }
+    
     var body: some View {
         VStack(spacing: 20) {
             
@@ -64,11 +69,14 @@ struct LoginTab: View {
             Button(action: {
                 isLoggingIn = true
                 RealmManager.shared.login(self.email, password: self.password, onCompletion: { (error) in
-                        DispatchQueue.main.async {
-                            isLoggingIn = false
-                            NSLog("Login success")
-                            self.userDataState.setup()
-                            self.appState.target = .chat
+                        isLoggingIn = false
+                        if error != nil {
+                            self.showLoginInvalidParameters()
+                        } else {
+                            DispatchQueue.main.async {
+                                self.userDataState.setup()
+                                self.appState.target = .chat
+                            }
                         }
                     }
                 )
@@ -83,6 +91,9 @@ struct LoginTab: View {
             .cornerRadius(8)
 
         }.font(.title)
+        .alert(item: $message) { message in
+            Alert(message)
+        }
     }
 }
 
@@ -93,6 +104,12 @@ struct SignupTab: View {
     @EnvironmentObject var appState: AppState
     @EnvironmentObject var userDataState: UserDataState
     @State var isLoggingIn = false
+    @State private var message: AlertMessage? = nil
+
+    func showLoginInvalidParameters(){
+        self.message = AlertMessage(title: "Signup Failed", message: "You have entered an invalid handle or password.", target: .login, state: self.appState)
+    }
+    
     var body: some View {
         VStack(spacing: 20) {
             
@@ -128,12 +145,16 @@ struct SignupTab: View {
             Button(action: {
                 isLoggingIn = true
                 RealmManager.shared.signup(self.email, password: self.password, name: self.name, onCompletion: { (error) in
-                        DispatchQueue.main.async {
-                            NSLog("Signup success")
-                            isLoggingIn = false
-                            self.userDataState.setup()
-                            self.appState.target = .chat
+                        isLoggingIn = false
+                        if error != nil {
+                            self.showLoginInvalidParameters()
+                        } else {
+                            DispatchQueue.main.async {
+                                self.userDataState.setup()
+                                self.appState.target = .chat
+                            }
                         }
+
                     }
                 )
             }) {
@@ -147,6 +168,9 @@ struct SignupTab: View {
             .cornerRadius(8)
 
         }.font(.title)
+        .alert(item: $message) { message in
+            Alert(message)
+        }
     }
 }
 

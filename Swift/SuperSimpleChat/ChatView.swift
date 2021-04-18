@@ -14,38 +14,49 @@ struct ChatView: View {
     @EnvironmentObject var userDataState: UserDataState
     @State private var chatText = ""
     
-    @ObservedResults(ChatEntry.self) var chatEntries
+    @ObservedResults(ChatEntry.self, sortDescriptor: SortDescriptor(keyPath: "createdAt", ascending: true)) var chatEntries
+    
+    @State private var realmChatsNotificationToken: NotificationToken?
 
     func addChatMessage() -> Void {
         let chatEntry = ChatEntry(name: userDataState.name, text: self.chatText)
         $chatEntries.append(chatEntry)
         self.chatText = ""
     }
-
+    
     var body: some View {
         
         NavigationView {
             ZStack {
                 VStack(spacing: 25) {
+                    
+                    ScrollView {
+                        ScrollViewReader { proxy in
+                            LazyVStack(alignment: .leading, spacing: 5) {
+                                ForEach(chatEntries) { chatEntry in
+                                    VStack(alignment: .leading) {
+                                        Text(chatEntry.name)
+                                            .foregroundColor(.gray)
+                                            .font(Font.caption)
+                                            .padding(.bottom)
+                                        Text(chatEntry.text).font(Font.title)
+                                    }
+                                    .id(chatEntry._id)
+                                    .padding()
+                                }
 
-                    List {
-                        
-                        ForEach(chatEntries.sorted(byKeyPath: "createdAt", ascending: false)) { chatEntry in
-                            VStack(alignment: .leading) {
-                                Text(chatEntry.name)
-                                    .foregroundColor(.gray)
-                                    .font(Font.caption)
-                                    .padding(.bottom)
-                                Text(chatEntry.text).font(Font.title)
                             }
-                            .padding()
-                            .rotationEffect(.radians(.pi))
-                            .scaleEffect(x: -1, y: 1, anchor: .center)
+                            .onAppear() {
+                                if let last = chatEntries.last {
+                                    proxy.scrollTo(last._id, anchor: .bottom)
+                                }                            }
+                            .onChange(of: chatEntries.count) { _ in
+                                if let last = chatEntries.last {
+                                    proxy.scrollTo(last._id, anchor: .bottom)
+                                }
+                            }
                         }
-
                     }
-                    .rotationEffect(.radians(.pi))
-                    .scaleEffect(x: -1, y: 1, anchor: .center)
                     
                    // Spacer()
                     HStack(spacing: 10) {
